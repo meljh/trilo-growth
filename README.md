@@ -1,6 +1,8 @@
 # trilo-growth
 
-This is a repository for code and data related to projects modeling growth in trilobites
+This is a repository for code and data related to projects modeling growth in trilobites, and described in:
+
+Hopkins MJ (2019) A simple generative model of trilobite segmentation and growth, to be posted as a preprint imminently
 
 Unless otherwise marked, all materials are distributed under a CC-BY-NC license.
 
