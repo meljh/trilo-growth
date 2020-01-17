@@ -1,5 +1,5 @@
 #parameter estimation from growth series to accompany trilobite growth model
-#written by Melanie J Hopkins
+#written by Melanie J Hopkins 10/5/19
 
 #need growth series with standard headers (specimen, morphotype, CEL, TS1...etc, PYL). For juveniles, non-existent thoracic tergites should be entered as "0" length. If specimen numbers exist, they should be treated as row names
 # Ter = number of terminal tergites
