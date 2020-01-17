@@ -1,9 +1,10 @@
 #growth model based on various parameters
-#written by Melanie J Hopkins
+#written by Melanie J Hopkins 10/5/19
+#changes made 1/13/20: "N" variable replaced with "Molt"; calculation of thorax and total body length fixed to sum across all columns (had been summing across only a subset for meraspid stages)
 
 #par.estSP may be created using par.est.R
 
-trilo.growth<-function(N,par.estSP,med=TRUE,plot.bol=TRUE,plot.pic=TRUE,R=NULL)
+trilo.growth<-function(Molt,par.estSP,med=TRUE,plot.bol=TRUE,plot.pic=TRUE,R=NULL)
 {
   
   ##input prep
@@ -44,10 +45,10 @@ trilo.growth<-function(N,par.estSP,med=TRUE,plot.bol=TRUE,plot.pic=TRUE,R=NULL)
     R=Ter
   }
   
-  S<-c(1:Ter,rep(Ter,N-Ter))
+  S<-c(1:Ter,rep(Ter,Molt-Ter))
   
-  bol<-matrix(0,nrow=N,ncol=Ter+4)
-  for (M in 1:N){
+  bol<-matrix(0,nrow=Molt,ncol=Ter+4)
+  for (M in 1:Molt){
     bol[M,1] <- cr <- ce*g.c^M
     #insertion of initial thoracic tergite
     if (M==1){
@@ -184,8 +185,8 @@ trilo.growth<-function(N,par.estSP,med=TRUE,plot.bol=TRUE,plot.pic=TRUE,R=NULL)
     
     
     
-    bol[M,Ter+3] <- th <- sum(bol[M,2:(S[M]+1)])
-    bol[M,Ter+4] <- sum(bol[M,1:(S[M]+2)])
+    bol[M,Ter+3] <- th <- sum(bol[M,2:(S[Molt]+1)])
+    bol[M,Ter+4] <- sum(bol[M,1:(S[Molt]+2)])
   }
   
   #colnames(bol)<-c('CEL',paste(''))
@@ -208,14 +209,14 @@ trilo.growth<-function(N,par.estSP,med=TRUE,plot.bol=TRUE,plot.pic=TRUE,R=NULL)
   }
   
   if (plot.pic==TRUE){
-    plot(1, type="n",axes=F,xlab="", ylab="",xlim=c(0,30),ylim=c(-(bol[N,Ter+4]+5),(bol[N,1]+5)),asp=1)
-    rect(xleft=seq(15-bol[N,1],15-bol[N,Ter+2],(bol[N,1]-bol[N,Ter+2])/(Ter-1)),
-         xright=seq(15+bol[N,1],15+bol[N,Ter+2],-(bol[N,1]-bol[N,Ter+2])/(Ter-1)),
-         ybottom=(-cumsum(bol[N,2:(Ter+1)])),
-         ytop=c(0,-cumsum(bol[N,2:Ter])),
+    plot(1, type="n",axes=F,xlab="", ylab="",xlim=c(0,30),ylim=c(-(bol[Molt,Ter+4]+5),(bol[Molt,1]+5)),asp=1)
+    rect(xleft=seq(15-bol[Molt,1],15-bol[Molt,Ter+2],(bol[Molt,1]-bol[Molt,Ter+2])/(Ter-1)),
+         xright=seq(15+bol[Molt,1],15+bol[Molt,Ter+2],-(bol[Molt,1]-bol[Molt,Ter+2])/(Ter-1)),
+         ybottom=(-cumsum(bol[Molt,2:(Ter+1)])),
+         ytop=c(0,-cumsum(bol[Molt,2:Ter])),
          col=gray(1:Ter/Ter))
-    upper.half.circle(15,0,bol[N,1],nstep=1000,col='deepskyblue1')
-    lower.half.circle(15,-sum(bol[N,2:(Ter+1)]),bol[N,Ter+2],nstep=1000,col='hotpink1')
+    upper.half.circle(15,0,bol[Molt,1],nstep=1000,col='deepskyblue1')
+    lower.half.circle(15,-sum(bol[Molt,2:(Ter+1)]),bol[Molt,Ter+2],nstep=1000,col='hotpink1')
   }
   
   colnames(bol)<-c('CEL',paste0(rep('TSL',Ter),1:Ter,sep=''),'PYL','THOR','TOT')
