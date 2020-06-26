@@ -6,9 +6,7 @@ DATA FILES FOR TRILOBITE GROWTH PROJECTS
 
 Used in [Hopkins MJ (2020)](https://paleorxiv.org/zt642/)
 
-Modified from supplementary tables associated with: [Hughes NC, Hong PS, Hou JB and Fusco G (2017)](https://www.frontiersin.org/articles/10.3389/fevo.2017.00037/full)
-
-Distributed under a CC-BY license.
+Modified from supplementary tables associated with: [Hughes et al (2017)](https://www.frontiersin.org/articles/10.3389/fevo.2017.00037/full), distributed under a CC-BY license.
 
 +[Elrathia-kingii-length.txt](Elrathia-kingii-length.txt). Comprises length data for 228 specimens of the trilobite <i>Elrathia kingii</i>. Thoracic tergites are numbered from anterior to posterior; values are averaged as described in the methods.  All lengths are in millimeters. NA = not applicable (i.e. specimen did not have that thoracic tergite). Total body length may be calculated by summing across all sclerites for each specimen. Catalog numbers are used as row names. Column headers are in the format expected by the par.est.R script as follows:
 
