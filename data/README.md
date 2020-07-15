@@ -19,3 +19,5 @@ x <- read.table('Elrathia-kingii-length.txt', header = TRUE)
 source ('par.est.R')
 
 par.est.x <- par.est(x)
+
+Used in [Hopkins MJ (2020)](https://doi.org/10.1002/spp2.1331)
